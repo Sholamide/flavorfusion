@@ -1,4 +1,3 @@
-
 export const categories = [
     {
         image:'https://www.themealdb.com/images/category/starter.png',

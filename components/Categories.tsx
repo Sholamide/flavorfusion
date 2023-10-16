@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { View, Image, ScrollView, Text, TouchableOpacity } from "react-native";
-import { CategoryProps } from "../types";
+import { Category } from "../types";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -12,7 +12,7 @@ import { CachedImage } from "../helpers/image";
 type CategoriesProps = {
   activeCategory: string;
   handleChangeCategory: (category: string) => void;
-  categories: CategoryProps[];
+  categories: Category[];
 };
 
 const Categories = ({
@@ -31,7 +31,7 @@ const Categories = ({
         {categories?.length == 0 ? (
           <Loader size="large" className="mt-20" />
         ) : (
-          categories.map((category: CategoryProps, index: number) => {
+          categories.map((category: Category, index: number) => {
             let isActive = category.strCategory == activeCategory;
             let activeButtonClass = isActive ? "bg-amber-400" : "bg-black/10";
 
@@ -42,15 +42,11 @@ const Categories = ({
                 onPress={() => handleChangeCategory(category.strCategory)}
               >
                 <View className={"rounded-full p-[6px]" + activeButtonClass}>
-                  {/* <Image
+                  <CachedImage
                     className="rounded-full"
                     style={{ width: hp(6), height: hp(6) }}
-                    source={{ uri: category.strCategoryThumb }}
-                  /> */}
-                  <CachedImage
-                   className="rounded-full"
-                   style={{ width: hp(6), height: hp(6) }}
-                    uri={category.strCategoryThumb} />
+                    uri={category.strCategoryThumb}
+                  />
                 </View>
                 <Text
                   className="text-neutral-600 font-semibold"

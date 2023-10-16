@@ -6,9 +6,9 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
-import {WelcomeScreenProps} from '../types'
+import { RootStackScreenProps } from "../types";
 
-const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
+const WelcomeScreen = ({ navigation }: RootStackScreenProps<"Welcome">) => {
   const outerRingPadding = useSharedValue(0);
   const innerRingPadding = useSharedValue(0);
 
