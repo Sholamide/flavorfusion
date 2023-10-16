@@ -4,15 +4,14 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import MasonryList from "@react-native-seoul/masonry-list";
-import { Recipe } from "../interfaces";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import Loader from "./Loader";
 import { CachedImage } from "../helpers/image";
 import { useNavigation } from "@react-navigation/native";
-import { DetailsScreenProps, RootStackParamList } from "../types";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Category, Meals } from "../types";
 
-const RecipeCard = ({ item, index, navigation }) => {
+
+const RecipeCard = ({ item, index, navigation }:{item:Meals, index:number, navigation:any}) => {
 
   let isEven = index % 2 == 0;
 
@@ -56,11 +55,10 @@ const RecipeCard = ({ item, index, navigation }) => {
   );
 };
 
-const Recipes = ({ categories, meals }) => {
+const Recipes = ({ categories, meals }:{categories:Category[], meals:Meals[]}) => {
   const navigation = useNavigation();
 
-
-  const renderItem = ({ item, i }) => {
+  const renderItem = ({ item, i }:{item:any, i:number}) => {
     return <RecipeCard item={item} index={i} navigation={navigation} />;
   }; 
 
@@ -83,7 +81,6 @@ const Recipes = ({ categories, meals }) => {
               paddingHorizontal: 24,
               alignSelf: "stretch",
             }}
-            // onEndReached={() => console.log("onEndReached")}
             numColumns={2}
             data={meals}
             renderItem={renderItem}

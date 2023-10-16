@@ -10,17 +10,17 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
-import { CategoryProps, HomeScreenProps } from "../types";
+import { Category, Meals } from "../types";
 import { TextInput } from "react-native";
 import Categories from "../components/Categories";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Recipes from "../components/Recipes";
 
-const HomeScreen = ({ navigation }: HomeScreenProps) => {
-  const [activeCategory, setactiveCategory] = useState("Beef");
-  const [categories, setcategories] = useState([]);
-  const [meals, setMeals] = useState([]);
+const HomeScreen = () => {
+  const [activeCategory, setactiveCategory] = useState<string>("Beef");
+  const [categories, setcategories] = useState<Category[]>([]);
+  const [meals, setMeals] = useState<Meals[]>([]);
 
   useEffect(() => {
     getCategories();
@@ -137,7 +137,7 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
           <Categories
             activeCategory={activeCategory}
             categories={categories}
-            handleChangeCategory={handleChangeCategory} 
+            handleChangeCategory={handleChangeCategory}
           />
         </View>
         <View>
